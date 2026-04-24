@@ -1,0 +1,163 @@
+Personal Blog
+一个由 Go + Gin 后端和 Vue 3 + TypeScript 前端构建的个人博客系统。
+
+项目简介
+Personal Blog 是一个功能完善的个人博客平台，支持文章管理、评论系统、用户管理、反馈系统等功能。后端采用 Go 语言与 Gin 框架，前端使用 Vue 3 和 TypeScript，数据存储结合 MySQL、Redis 和 Elasticsearch。
+
+技术栈
+后端
+语言: Go
+框架: Gin
+数据库: MySQL
+缓存: Redis
+搜索引擎: Elasticsearch
+图片存储: 本地存储或七牛云
+认证: JWT
+前端
+框架: Vue 3
+语言: TypeScript
+状态管理: Pinia
+构建工具: Vite
+主要功能
+文章系统
+文章创建、编辑、删除
+文章分类与标签
+文章搜索 (Elasticsearch)
+文章点赞与收藏
+阅读量统计
+评论系统
+文章评论
+嵌套回复
+评论管理
+用户系统
+用户注册与登录 (邮箱 / QQ)
+密码找回
+用户信息管理
+用户冻结/解冻
+登录日志
+网站配置
+轮播图管理
+底部链接
+网站 Logo 和标题
+系统配置管理
+邮件配置
+七牛云配置
+高德地图配置
+反馈系统
+用户反馈提交
+管理员回复
+其他
+图片上传与管理
+验证码
+日历功能
+天气预报
+项目结构
+/
+├── server/              # Go 后端
+│   ├── api/            # API 路由处理
+│   ├── config/         # 配置加载
+│   ├── core/           # 核心初始化
+│   ├── flag/           # 命令行工具
+│   ├── global/         # 全局变量
+│   ├── initialize/     # 初始化
+│   ├── middleware/     # 中间件
+│   ├── model/          # 数据模型
+│   ├── router/        # 路由配置
+│   ├── service/       # 业务逻辑
+│   ├── task/          # 定时任务
+│   ├── utils/         # 工具函数
+│   └── main.go        # 入口文件
+│
+└── web/               # Vue 3 前端
+    ├── public/        # 静态资源
+    └── src/           # 源代码
+        ├── api/       # API 调用
+        ├── components/# 组件
+        ├── views/     # 页面视图
+        ├── stores/   # 状态管理
+        ├── utils/    # 工具函数
+        └── main.ts   # 入口文件
+快速开始
+后端配置
+安装 Go 依赖:
+cd server
+go mod tidy
+配置 config.yaml:
+system:
+  addr: :8080
+  storage: local  # 或 qiniu
+
+mysql:
+  host: localhost
+  port: 3306
+  dbname: blog
+  username: root
+  password: your_password
+
+redis:
+  host: localhost
+  port: 6379
+
+jwt:
+  secret: your_secret_key
+  expire: 7200
+
+qiniu:
+  access_key: your_access_key
+  secret_key: your_secret_key
+  bucket: your_bucket
+  domain: your_domain
+初始化数据库:
+go run . --sql
+创建管理员:
+go run . --admin
+启动服务:
+go run .
+前端配置
+安装依赖:
+cd web
+npm install
+配置环境变量 (.env):
+VITE_API_BASE_URL=http://localhost:8080
+启动开发服务器:
+npm run dev
+构建生产版本:
+npm run build
+命令行工具
+后端提供以下命令行参数:
+
+--sql: 初始化 MySQL 数据库表结构
+--sql-export: 导出数据库 SQL 到文件
+--sql-import: 从文件导入 SQL 数据
+--es: 初始化 Elasticsearch 索引
+--es-export: 导出 Elasticsearch 数据
+--es-import: 导入数据到 Elasticsearch
+--admin: 创建管理员账号
+API 概览
+基础接口
+POST /api/base/captcha - 获取验证码
+POST /api/base/email - 发送邮箱验证码
+用户接口
+POST /api/user/register - 用户注册
+POST /api/user/login - 用户登录
+POST /api/user/email_login - 邮箱登录
+GET /api/user/info - 获取用户信息
+PUT /api/user/info - 修改用户信息
+文章接口
+GET /api/article/list - 文章列表
+GET /api/article/search - 文章搜索
+POST /api/article/create - 创建文章
+PUT /api/article/update - 更新文章
+DELETE /api/article/delete - 删除文章
+评论接口
+GET /api/comment/list - 评论列表
+POST /api/comment/create - 创建评论
+DELETE /api/comment/delete - 删除评论
+网站配置接口
+GET /api/website/info - 网站信息
+GET /api/website/carousel - 轮播图
+PUT /api/website/carousel - 更新轮播图
+许可证
+MIT License
+
+本项目仅供学习和个人使用。
