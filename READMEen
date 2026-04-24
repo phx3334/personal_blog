@@ -1,0 +1,151 @@
+personal-blog
+base full-stack personal blog program A personal blog system built with a Go + Gin backend and Vue 3 + TypeScript frontend.
+
+Project Overview
+Personal Blog is a fully-featured personal blogging platform supporting article management, comment systems, user management, feedback systems, and more. The backend is built with Go and the Gin framework, while the frontend uses Vue 3 and TypeScript. Data storage integrates MySQL, Redis, and Elasticsearch.
+
+Technology Stack
+Backend
+Language: Go
+Framework: Gin
+Database: MySQL
+Cache: Redis
+Search Engine: Elasticsearch
+Image Storage: Local storage or Qiniu Cloud
+Authentication: JWT
+Frontend
+Framework: Vue 3
+Language: TypeScript
+State Management: Pinia
+Build Tool: Vite
+Key Features
+Article System
+Create, edit, and delete articles
+Article categories and tags
+Article search (Elasticsearch)
+Article likes and favorites
+View count tracking
+Comment System
+Article comments
+Nested replies
+Comment management
+User System
+User registration and login (Email / QQ)
+Password recovery
+User profile management
+User freeze/unfreeze
+Login logs
+Website Configuration
+Carousel image management
+Footer links
+Website logo and title
+System configuration management
+Email configuration
+Qiniu Cloud configuration
+Amap (Gaode) Map configuration
+Feedback System
+User feedback submission
+Admin replies
+Other Features
+Image upload and management
+CAPTCHA
+Calendar functionality
+Weather forecast
+Project Structure
+/
+├── server/              # Go backend
+│   ├── api/            # API route handlers
+│   ├── config/         # Configuration loading
+│   ├── core/           # Core initialization
+│   ├── flag/           # Command-line tools
+│   ├── global/         # Global variables
+│   ├── initialize/     # Initialization
+│   ├── middleware/     # Middleware
+│   ├── model/          # Data models
+│   ├── router/         # Route configuration
+│   ├── service/        # Business logic
+│   ├── task/           # Scheduled tasks
+│   ├── utils/          # Utility functions
+│   └── main.go         # Entry file
+│
+└── web/               # Vue 3 frontend
+    ├── public/        # Static assets
+    └── src/           # Source code
+        ├── api/       # API calls
+        ├── components/# Components
+        ├── views/     # Page views
+        ├── stores/    # State management
+        ├── utils/     # Utility functions
+        └── main.ts    # Entry file
+Quick Start
+Backend Configuration
+Install Go dependencies:
+cd server
+go mod tidy
+Configure config.yaml:
+system:
+addr: :8080
+storage: local  # or qiniu
+mysql: host: localhost port: 3306 dbname: blog username: root password: your_password
+
+redis: host: localhost port: 6379
+
+jwt: secret: your_secret_key expire: 7200
+
+qiniu: access_key: your_access_key secret_key: your_secret_key bucket: your_bucket domain: your_domain
+
+3. Initialize the database:
+```bash
+go run . --sql
+Create an admin account:
+go run . --admin
+Start the server:
+go run .
+Frontend Configuration
+Install dependencies:
+cd web
+npm install
+Configure environment variables (.env):
+VITE_API_BASE_URL=http://localhost:8080
+Start the development server:
+npm run dev
+Build for production:
+npm run build
+Command-Line Tools
+The backend provides the following command-line flags:
+
+--sql: Initialize MySQL database tables
+--sql-export: Export database SQL to file
+--sql-import: Import SQL data from file
+--es: Initialize Elasticsearch indexes
+--es-export: Export Elasticsearch data
+--es-import: Import data into Elasticsearch
+--admin: Create an admin account
+API Overview
+Base APIs
+POST /api/base/captcha - Get CAPTCHA
+POST /api/base/email - Send email verification code
+User APIs
+POST /api/user/register - Register user
+POST /api/user/login - Login user
+POST /api/user/email_login - Login via email
+GET /api/user/info - Get user information
+PUT /api/user/info - Update user information
+Article APIs
+GET /api/article/list - Get article list
+GET /api/article/search - Search articles
+POST /api/article/create - Create article
+PUT /api/article/update - Update article
+DELETE /api/article/delete - Delete article
+Comment APIs
+GET /api/comment/list - Get comment list
+POST /api/comment/create - Create comment
+DELETE /api/comment/delete - Delete comment
+Website Configuration APIs
+GET /api/website/info - Get website info
+GET /api/website/carousel - Get carousel images
+PUT /api/website/carousel - Update carousel images
+License
+MIT License
+
+This project is intended solely for learning and personal use.
