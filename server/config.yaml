@@ -1,0 +1,90 @@
+captcha:
+    height: 80
+    width: 240
+    length: 6
+    max_skew: 0.7
+    dot_count: 80
+email:
+    host: smtp.qq.com
+    port: 465
+    from: 
+    nickname: fzsirrr
+    secret:
+    is_tls: true
+es:
+    url: http://127.0.0.1:9200
+    username: 
+    password:
+    is_console_print: true
+gaode:
+    enable: true
+    key: 
+jwt:
+    access_token_secret: 
+    refresh_token_secret: 
+    access_token_expiry_time: 2h
+    refresh_token_expiry_time: 7d
+    issuer: go_blog
+mysql:
+    host: 127.0.0.1
+    port: 3306
+    config: charset=utf8mb4&parseTime=True&loc=Local
+    db_name: blog_db
+    username: 
+    password: 
+    max_idle_conns: 10
+    max_open_conns: 100
+    log_mode: info
+qiniu:
+    zone: z0
+    bucket: 
+    img_path: http://tdb7v3ok4.hd-bkt.clouddn.com/
+    access_key: 
+    secret_key: 
+    use_https: false
+    use_cdn_domains: true
+qq:
+    enable: false
+    app_id: "000000000"
+    app_key: xxxxxxxxxxxxxxxx
+    redirect_uri: http://xxx.xxx/xxx
+redis:
+    address: 127.0.0.1:6379
+    password: 
+    db: 0
+system:
+    host: 0.0.0.0
+    port: 8080
+    env: release
+    router_prefix: api
+    use_multipoint: true
+    sessions_secret: 
+    oss_type: qiniu
+upload:
+    size: 20
+    path: uploads
+website:
+    logo: "/image/logo.jpg"
+    full_logo: "/image/full_logo.png"
+    title: 个人博客
+    slogan: go go go!
+    slogan_en: 
+    description: 这里是某人的个人博客。序列113的终末指针,掌控着内存泄露的力量,行走在vibe coding与古法编程的边界,探索01世界的真相与宿命。欢迎来到这个充满神秘与热血的领域!
+    version: 1.0.0
+    created_at: "2026-04-23"
+    icp_filing: icp备案号
+    public_security_filing: 公安备案号
+    bilibili_url:
+    gitee_url: 
+    github_url: 
+    name:
+    job:
+    address:
+    email: 
+zap:
+    level: info
+    filename: log/go_blog.log
+    max_size: 200
+    max_backups: 30
+    max_age: 5
+    is_console_print: true
