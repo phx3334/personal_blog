@@ -82,7 +82,7 @@ func InitRouter() *gin.Engine {
 	}
    
 	{
-      routerGroup.InitImageRouter(adminGroup)
+      routerGroup.InitImageRouter(adminGroup,privateGroup)
 	  routerGroup.InitConfigRouter(adminGroup)
 	  routerGroup.InitWebsiteRouter(adminGroup,publicGroup)
 	}
